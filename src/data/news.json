@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Sample Headline",
+    "url": "https://example.com/news1",
+    "image": "https://via.placeholder.com/800x400.png?text=News",
+    "excerpt": "Short summary of the article.",
+    "source": "Sample Source",
+    "published": "2025-07-15"
+  }
+]
