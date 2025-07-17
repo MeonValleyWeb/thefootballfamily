@@ -1,15 +1,13 @@
 ---
-import Base from '../layouts/Base.astro';
-
+import '../styles/global.css';
 import articles from '../data/news.json';
 ---
-
 <html>
 <body class="bg-gray-100 text-gray-800">
 <div class="max-w-4xl mx-auto p-6">
-	<h1 class="bg-red-500 text-white text-3xl font-bold mb-6">Latest News</h1>
+	<h1 class="text-3xl font-bold mb-6">Latest News</h1>
 	<div class="grid gap-6 md:grid-cols-2">
-		{articles.map((a) => (
+		{articles.map(a => (
 			<a href={`/go?url=${encodeURIComponent(a.url)}`} class="block bg-white rounded shadow hover:shadow-md transition">
 				<img src={a.image} alt={a.title} class="w-full h-48 object-cover rounded-t" />
 				<div class="p-4">

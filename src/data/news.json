@@ -1,10 +1,10 @@
 [
   {
-    "title": "Sample Headline",
-    "url": "https://example.com/news1",
-    "image": "https://via.placeholder.com/800x400.png?text=News",
-    "excerpt": "Short summary of the article.",
-    "source": "Sample Source",
-    "published": "2025-07-15"
+    "title": "Welcome to Your News Site",
+    "url": "https://example.com",
+    "image": "https://via.placeholder.com/800x400",
+    "excerpt": "This is a placeholder. When you connect Make.com, real articles will appear here.",
+    "source": "Example",
+    "published": "2025-07-16T00:00:00Z"
   }
 ]
