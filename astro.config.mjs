@@ -6,4 +6,11 @@ export default defineConfig({
   output: 'server',
   adapter: netlify(),
   integrations: [tailwind()],
+  vite: {
+    build: {
+      rollupOptions: {
+        external: []
+      }
+    }
+  }
 });
