@@ -1,23 +1,24 @@
 export async function handler(event) {
     try {
-        const { articles } = JSON.parse(event.body || '{}');
+        const body = JSON.parse(event.body || '{}');
 
-        if (!articles) {
-            throw new Error('Missing articles array');
+        // Defensive check
+        if (!body.articles || !Array.isArray(body.articles)) {
+            throw new Error('Missing or invalid articles array');
         }
 
-        const jsonString = JSON.stringify(articles);
-        const encoded = Buffer.from(jsonString).toString('base64');
+        const jsonString = JSON.stringify(body.articles);
+        const base64 = Buffer.from(jsonString).toString('base64');
 
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ base64: encoded })
+            body: JSON.stringify({ base64 })
         };
     } catch (err) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Failed to encode.' })
+            body: JSON.stringify({ error: 'Failed to encode.', details: err.message })
         };
     }
 }
