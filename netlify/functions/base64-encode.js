@@ -1,7 +1,12 @@
 export async function handler(event) {
     try {
-        const data = JSON.parse(event.body || '{}');
-        const jsonString = JSON.stringify(data);
+        const { articles } = JSON.parse(event.body || '{}');
+
+        if (!articles) {
+            throw new Error('Missing articles array');
+        }
+
+        const jsonString = JSON.stringify(articles);
         const encoded = Buffer.from(jsonString).toString('base64');
 
         return {
