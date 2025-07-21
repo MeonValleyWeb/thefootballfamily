@@ -2,9 +2,15 @@ export async function handler(event) {
     try {
         const body = JSON.parse(event.body || '{}');
 
-        // Defensive check
-        if (!body.articles || !Array.isArray(body.articles)) {
-            throw new Error('Missing or invalid articles array');
+        if (!Array.isArray(body.articles)) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({
+                    error: 'Invalid body format',
+                    receivedType: typeof body.articles,
+                    rawBody: body
+                })
+            };
         }
 
         const jsonString = JSON.stringify(body.articles);
