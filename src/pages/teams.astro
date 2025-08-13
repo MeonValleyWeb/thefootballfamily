@@ -1,0 +1,153 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getClubBadge, getClubInitials } from '../utils/clubBadges.js';
+
+// Premier League teams data - we'll expand this with your data
+const teams = [
+    { name: 'Arsenal', slug: 'arsenal', founded: 1886, stadium: 'Emirates Stadium', capacity: 60704, colors: ['#EF0107', '#FFFFFF'] },
+    { name: 'Aston Villa', slug: 'aston-villa', founded: 1874, stadium: 'Villa Park', capacity: 42682, colors: ['#95BFE5', '#670E36'] },
+    { name: 'Brighton & Hove Albion', slug: 'brighton', founded: 1901, stadium: 'American Express Community Stadium', capacity: 31800, colors: ['#0057B8', '#FFCD00'] },
+    { name: 'Burnley', slug: 'burnley', founded: 1882, stadium: 'Turf Moor', capacity: 21944, colors: ['#6C1D45', '#99D6EA'] },
+    { name: 'Chelsea', slug: 'chelsea', founded: 1905, stadium: 'Stamford Bridge', capacity: 40834, colors: ['#034694', '#FFFFFF'] },
+    { name: 'Crystal Palace', slug: 'crystal-palace', founded: 1905, stadium: 'Selhurst Park', capacity: 25486, colors: ['#1B458F', '#A7A5A6'] },
+    { name: 'Everton', slug: 'everton', founded: 1878, stadium: 'Goodison Park', capacity: 39414, colors: ['#003399', '#FFFFFF'] },
+    { name: 'Fulham', slug: 'fulham', founded: 1879, stadium: 'Craven Cottage', capacity: 19359, colors: ['#FFFFFF', '#000000'] },
+    { name: 'Liverpool', slug: 'liverpool', founded: 1892, stadium: 'Anfield', capacity: 53394, colors: ['#C8102E', '#FFFFFF'] },
+    { name: 'Luton Town', slug: 'luton-town', founded: 1885, stadium: 'Kenilworth Road', capacity: 10356, colors: ['#F78F1E', '#002D62'] },
+    { name: 'Manchester City', slug: 'manchester-city', founded: 1880, stadium: 'Etihad Stadium', capacity: 55017, colors: ['#6CABDD', '#FFFFFF'] },
+    { name: 'Manchester United', slug: 'manchester-united', founded: 1878, stadium: 'Old Trafford', capacity: 74310, colors: ['#DA020E', '#FFFFFF'] },
+    { name: 'Newcastle United', slug: 'newcastle-united', founded: 1892, stadium: 'St. James\' Park', capacity: 52305, colors: ['#241F20', '#FFFFFF'] },
+    { name: 'Nottingham Forest', slug: 'nottingham-forest', founded: 1865, stadium: 'The City Ground', capacity: 30445, colors: ['#DD0000', '#FFFFFF'] },
+    { name: 'Sheffield United', slug: 'sheffield-united', founded: 1889, stadium: 'Bramall Lane', capacity: 32050, colors: ['#EE2737', '#FFFFFF'] },
+    { name: 'Tottenham Hotspur', slug: 'tottenham', founded: 1882, stadium: 'Tottenham Hotspur Stadium', capacity: 62850, colors: ['#132257', '#FFFFFF'] },
+    { name: 'West Ham United', slug: 'west-ham', founded: 1895, stadium: 'London Stadium', capacity: 66000, colors: ['#7A263A', '#1BB1E7'] },
+    { name: 'Wolverhampton Wanderers', slug: 'wolves', founded: 1877, stadium: 'Molineux Stadium', capacity: 31700, colors: ['#FDB462', '#231F20'] },
+    { name: 'Brentford', slug: 'brentford', founded: 1889, stadium: 'Brentford Community Stadium', capacity: 17250, colors: ['#E30613', '#FFFFFF'] },
+    { name: 'AFC Bournemouth', slug: 'bournemouth', founded: 1899, stadium: 'Vitality Stadium', capacity: 11364, colors: ['#DA020E', '#000000'] }
+];
+---
+
+<MainLayout title="Premier League Teams - The Football Family">
+    <!-- Header Section -->
+    <section class="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                Premier League Teams
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Explore detailed information about all 20 Premier League clubs, including their history, stadiums, and current statistics.
+            </p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="px-4 mb-8">
+        <div class="container mx-auto">
+            <div class="max-w-md mx-auto">
+                <input 
+                    type="text" 
+                    id="team-search" 
+                    placeholder="Search teams..." 
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Grid -->
+    <section class="px-4 pb-16">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="teams-grid">
+                {teams.map(team => (
+                    <div class="team-card bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm hover:scale-105">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-4 bg-gray-100 border border-gray-200">
+                                <img 
+                                    src={getClubBadge(team.slug)} 
+                                    alt={`${team.name} badge`}
+                                    class="w-8 h-8 object-contain"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                                />
+                                <div class="w-8 h-8 bg-blue-600 rounded text-white text-xs font-bold flex items-center justify-center hidden">
+                                    {getClubInitials(team.name)}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">{team.name}</h3>
+                                <p class="text-gray-500 text-sm">Est. {team.founded}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Stadium:</span>
+                                <span class="text-gray-900 font-medium">{team.stadium}</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Capacity:</span>
+                                <span class="text-gray-900 font-medium">{team.capacity.toLocaleString()}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-2 mb-4">
+                            {team.colors.map(color => (
+                                <div class="w-6 h-6 rounded-full border-2 border-gray-200" style={`background-color: ${color}`}></div>
+                            ))}
+                        </div>
+                        
+                        <a href={`/teams/${team.slug}`} class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-lg font-medium transition-colors">
+                            View Details
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-16 px-4 bg-black/20">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">League Overview</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-white mb-2">20</div>
+                    <div class="text-green-200">Teams</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white mb-2">38</div>
+                    <div class="text-green-200">Games per Team</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white mb-2">380</div>
+                    <div class="text-green-200">Total Matches</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white mb-2">1992</div>
+                    <div class="text-green-200">Founded</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>
+
+<script>
+    // Team search functionality
+    const searchInput = document.getElementById('team-search');
+    const teamsGrid = document.getElementById('teams-grid');
+    const teamCards = document.querySelectorAll('.team-card');
+
+    searchInput?.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        teamCards.forEach(card => {
+            const teamName = card.querySelector('h3')?.textContent?.toLowerCase() || '';
+            const stadium = card.querySelector('.text-white')?.textContent?.toLowerCase() || '';
+            
+            if (teamName.includes(searchTerm) || stadium.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>

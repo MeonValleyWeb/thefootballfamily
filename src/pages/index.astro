@@ -1,23 +1,163 @@
 ---
-import '../styles/global.css';
-import articles from '../data/news.json';
+import MainLayout from '../layouts/MainLayout.astro';
 ---
-<html>
-<body class="bg-gray-100 text-gray-800">
-<div class="max-w-4xl mx-auto p-6">
-	<h1 class="text-3xl font-bold mb-6">Latest News</h1>
-	<div class="grid gap-6 md:grid-cols-2">
-		{articles.map(a => (
-			<a href={`/go?url=${encodeURIComponent(a.url)}`} class="block bg-white rounded shadow hover:shadow-md transition">
-				<img src={a.image} alt={a.title} class="w-full h-48 object-cover rounded-t" />
-				<div class="p-4">
-					<h2 class="text-xl font-semibold">{a.title}</h2>
-					<p class="text-gray-600 mt-2">{a.excerpt}</p>
-					<p class="text-sm text-gray-500 mt-2">Source: {a.source}</p>
-				</div>
-			</a>
-		))}
-	</div>
-</div>
-</body>
-</html>
+
+<MainLayout title="The Football Family - Premier League Data Hub">
+    <!-- Hero Section -->
+    <section class="relative py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="container mx-auto text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gray-900">
+                    The Football Family
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                    Your ultimate destination for Premier League data, statistics, team information, and everything football
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/teams" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg">
+                        Explore Teams
+                    </a>
+                    <a href="/matches" class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+                        View Matches
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+                Everything Football in One Place
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Premier League Results -->
+                <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl text-white">⚽</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Match Results</h3>
+                    <p class="text-gray-600 mb-4">
+                        Comprehensive Premier League results with goal scorers, head-to-head records, and detailed match statistics.
+                    </p>
+                    <a href="/matches" class="text-blue-600 hover:text-blue-800 font-medium">
+                        View Results →
+                    </a>
+                </div>
+
+                <!-- Team Information -->
+                <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm">
+                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl text-white">🏟️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Team Profiles</h3>
+                    <p class="text-gray-600 mb-4">
+                        In-depth team information including owners, valuations, stadiums, attendance figures, and club history.
+                    </p>
+                    <a href="/teams" class="text-blue-600 hover:text-blue-800 font-medium">
+                        Explore Teams →
+                    </a>
+                </div>
+
+                <!-- Football Guides -->
+                <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm">
+                    <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl text-white">📚</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Football Guides</h3>
+                    <p class="text-gray-600 mb-4">
+                        Learn about player positions, tactical formations, rules, and everything you need to understand the beautiful game.
+                    </p>
+                    <a href="/guides" class="text-blue-600 hover:text-blue-800 font-medium">
+                        Read Guides →
+                    </a>
+                </div>
+
+                <!-- Transfer News -->
+                <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm">
+                    <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl text-white">💰</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Transfer Data</h3>
+                    <p class="text-gray-600 mb-4">
+                        Track the biggest transfers each season with detailed breakdowns of fees, player movements, and market trends.
+                    </p>
+                    <a href="/transfers" class="text-blue-600 hover:text-blue-800 font-medium">
+                        View Transfers →
+                    </a>
+                </div>
+
+                <!-- Matchday Guide -->
+                <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm">
+                    <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl text-white">🍺</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Matchday Info</h3>
+                    <p class="text-gray-600 mb-4">
+                        Essential matchday information including nearest pubs for away fans, travel guides, and stadium information.
+                    </p>
+                    <a href="/guides/matchday" class="text-blue-600 hover:text-blue-800 font-medium">
+                        Plan Your Visit →
+                    </a>
+                </div>
+
+                <!-- News Feed -->
+                <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 shadow-sm">
+                    <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl text-white">📰</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Latest News</h3>
+                    <p class="text-gray-600 mb-4">
+                        Stay updated with the latest football news, team updates, and breaking stories from the Premier League.
+                    </p>
+                    <a href="/news" class="text-blue-600 hover:text-blue-800 font-medium">
+                        Read News →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Section -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">20</div>
+                    <div class="text-gray-600">Premier League Teams</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">5</div>
+                    <div class="text-gray-600">Years of Data</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">1000+</div>
+                    <div class="text-gray-600">Matches Tracked</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">∞</div>
+                    <div class="text-gray-600">Football Passion</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Ready to Dive Deep into Football Data?
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Start exploring comprehensive Premier League statistics, team information, and match data.
+                </p>
+                <a href="/teams" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg inline-block">
+                    Start Exploring
+                </a>
+            </div>
+        </div>
+    </section>
+</MainLayout>

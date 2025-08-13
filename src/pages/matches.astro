@@ -1,0 +1,283 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import fs from 'fs';
+import path from 'path';
+
+// Sample match data - we'll replace this with your CSV data
+const sampleMatches = [
+    {
+        date: '2024-01-15',
+        homeTeam: 'Arsenal',
+        awayTeam: 'Crystal Palace',
+        homeScore: 5,
+        awayScore: 0,
+        competition: 'Premier League',
+        season: '2023-24',
+        venue: 'Emirates Stadium'
+    },
+    {
+        date: '2024-01-13',
+        homeTeam: 'Manchester United',
+        awayTeam: 'Tottenham',
+        homeScore: 2,
+        awayScore: 2,
+        competition: 'Premier League',
+        season: '2023-24',
+        venue: 'Old Trafford'
+    },
+    {
+        date: '2024-01-12',
+        homeTeam: 'Liverpool',
+        awayTeam: 'Fulham',
+        homeScore: 2,
+        awayScore: 1,
+        competition: 'Premier League',
+        season: '2023-24',
+        venue: 'Anfield'
+    },
+    {
+        date: '2024-01-11',
+        homeTeam: 'Chelsea',
+        awayTeam: 'Middlesbrough',
+        homeScore: 6,
+        awayScore: 1,
+        competition: 'FA Cup',
+        season: '2023-24',
+        venue: 'Stamford Bridge'
+    },
+    {
+        date: '2024-01-10',
+        homeTeam: 'Manchester City',
+        awayTeam: 'Huddersfield',
+        homeScore: 5,
+        awayScore: 0,
+        competition: 'FA Cup',
+        season: '2023-24',
+        venue: 'Etihad Stadium'
+    }
+];
+
+// Function to get team color
+function getTeamColor(teamName) {
+    const colors = {
+        'Arsenal': '#EF0107',
+        'Manchester United': '#DA020E',
+        'Liverpool': '#C8102E',
+        'Manchester City': '#6CABDD',
+        'Chelsea': '#034694',
+        'Tottenham': '#132257',
+        'Crystal Palace': '#1B458F',
+        'Fulham': '#FFFFFF',
+        'Middlesbrough': '#DC143C',
+        'Huddersfield': '#0E63AD'
+    };
+    return colors[teamName] || '#666666';
+}
+---
+
+<MainLayout title="Match Results - The Football Family">
+    <!-- Header Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Match Results
+            </h1>
+            <p class="text-xl text-green-100 max-w-3xl mx-auto">
+                Comprehensive Premier League and cup match results with detailed statistics and head-to-head records.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="px-4 mb-8">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <select id="season-filter" class="px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                        <option value="">All Seasons</option>
+                        <option value="2023-24">2023-24</option>
+                        <option value="2022-23">2022-23</option>
+                        <option value="2021-22">2021-22</option>
+                    </select>
+                    
+                    <select id="competition-filter" class="px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                        <option value="">All Competitions</option>
+                        <option value="Premier League">Premier League</option>
+                        <option value="FA Cup">FA Cup</option>
+                        <option value="League Cup">League Cup</option>
+                        <option value="Champions League">Champions League</option>
+                    </select>
+                    
+                    <select id="team-filter" class="px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                        <option value="">All Teams</option>
+                        <option value="Arsenal">Arsenal</option>
+                        <option value="Manchester United">Manchester United</option>
+                        <option value="Liverpool">Liverpool</option>
+                        <option value="Manchester City">Manchester City</option>
+                        <option value="Chelsea">Chelsea</option>
+                        <option value="Tottenham">Tottenham</option>
+                    </select>
+                    
+                    <input 
+                        type="text" 
+                        id="search-matches" 
+                        placeholder="Search matches..." 
+                        class="px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-green-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Match Results -->
+    <section class="px-4 pb-16">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-4" id="matches-container">
+                    {sampleMatches.map(match => (
+                        <div class="match-card bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+                            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                                <!-- Date and Competition -->
+                                <div class="text-center md:text-left">
+                                    <div class="text-green-300 text-sm font-medium">{match.competition}</div>
+                                    <div class="text-green-200 text-sm">{new Date(match.date).toLocaleDateString('en-GB', { 
+                                        weekday: 'short', 
+                                        year: 'numeric', 
+                                        month: 'short', 
+                                        day: 'numeric' 
+                                    })}</div>
+                                </div>
+
+                                <!-- Match Details -->
+                                <div class="flex-1 flex items-center justify-center">
+                                    <div class="flex items-center space-x-6">
+                                        <!-- Home Team -->
+                                        <div class="text-right">
+                                            <div class="text-white font-semibold text-lg">{match.homeTeam}</div>
+                                            <div class="text-green-200 text-sm">Home</div>
+                                        </div>
+
+                                        <!-- Score -->
+                                        <div class="bg-black/30 rounded-lg px-6 py-3 text-center">
+                                            <div class="text-2xl font-bold text-white">
+                                                {match.homeScore} - {match.awayScore}
+                                            </div>
+                                            <div class="text-green-200 text-xs">FT</div>
+                                        </div>
+
+                                        <!-- Away Team -->
+                                        <div class="text-left">
+                                            <div class="text-white font-semibold text-lg">{match.awayTeam}</div>
+                                            <div class="text-green-200 text-sm">Away</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Venue -->
+                                <div class="text-center md:text-right">
+                                    <div class="text-green-200 text-sm">{match.venue}</div>
+                                    <button class="text-green-300 hover:text-white text-sm font-medium transition-colors mt-1">
+                                        View Details →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-8">
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+                        Load More Matches
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Head-to-Head Section -->
+    <section class="py-16 px-4 bg-black/20">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">Head-to-Head Records</h2>
+                <p class="text-green-100 mb-8">
+                    Compare any two teams' historical performance against each other
+                </p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+                    <select class="px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                        <option value="">Select Team 1</option>
+                        <option value="Arsenal">Arsenal</option>
+                        <option value="Manchester United">Manchester United</option>
+                        <option value="Liverpool">Liverpool</option>
+                    </select>
+                    
+                    <span class="text-white font-bold">VS</span>
+                    
+                    <select class="px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+                        <option value="">Select Team 2</option>
+                        <option value="Arsenal">Arsenal</option>
+                        <option value="Manchester United">Manchester United</option>
+                        <option value="Liverpool">Liverpool</option>
+                    </select>
+                    
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        Compare
+                    </button>
+                </div>
+
+                <!-- Sample H2H Result -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 max-w-2xl mx-auto">
+                    <h3 class="text-xl font-semibold text-white mb-6">Arsenal vs Manchester United</h3>
+                    <div class="grid grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div class="text-3xl font-bold text-green-400 mb-2">12</div>
+                            <div class="text-green-200">Arsenal Wins</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-yellow-400 mb-2">8</div>
+                            <div class="text-green-200">Draws</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-red-400 mb-2">15</div>
+                            <div class="text-green-200">United Wins</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-green-200 text-sm">
+                        Last 35 Premier League meetings
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>
+
+<script>
+    // Filter functionality
+    const seasonFilter = document.getElementById('season-filter');
+    const competitionFilter = document.getElementById('competition-filter');
+    const teamFilter = document.getElementById('team-filter');
+    const searchInput = document.getElementById('search-matches');
+    const matchCards = document.querySelectorAll('.match-card');
+
+    function filterMatches() {
+        const season = seasonFilter?.value || '';
+        const competition = competitionFilter?.value || '';
+        const team = teamFilter?.value || '';
+        const search = searchInput?.value.toLowerCase() || '';
+
+        matchCards.forEach(card => {
+            const cardText = card.textContent?.toLowerCase() || '';
+            const showCard = cardText.includes(search) &&
+                            (competition === '' || cardText.includes(competition.toLowerCase())) &&
+                            (team === '' || cardText.includes(team.toLowerCase()));
+            
+            card.style.display = showCard ? 'block' : 'none';
+        });
+    }
+
+    seasonFilter?.addEventListener('change', filterMatches);
+    competitionFilter?.addEventListener('change', filterMatches);
+    teamFilter?.addEventListener('change', filterMatches);
+    searchInput?.addEventListener('input', filterMatches);
+</script>

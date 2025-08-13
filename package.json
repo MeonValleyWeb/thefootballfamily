@@ -1,10 +1,13 @@
 {
-  "name": "news-site",
+  "name": "the-football-family",
   "type": "module",
+  "version": "1.0.0",
+  "description": "Your ultimate football data destination - Premier League statistics, team information, and match results",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "start": "astro dev"
   },
   "dependencies": {
     "astro": "^4.6.0",
@@ -12,5 +15,13 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
-  }
+  },
+  "keywords": [
+    "football",
+    "premier-league",
+    "soccer",
+    "statistics",
+    "astro",
+    "tailwindcss"
+  ]
 }
