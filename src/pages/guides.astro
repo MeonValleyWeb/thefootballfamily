@@ -1,0 +1,225 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Football Guides - The Football Family">
+    <!-- Header Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Football Guides
+            </h1>
+            <p class="text-xl text-green-100 max-w-3xl mx-auto">
+                Everything you need to know about football - from player positions to matchday experiences.
+            </p>
+        </div>
+    </section>
+
+    <!-- Guides Grid -->
+    <section class="px-4 pb-16">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Player Positions Guide -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/20">
+                    <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-3xl">👤</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Player Positions</h3>
+                    <p class="text-green-100 mb-6 leading-relaxed">
+                        Understand the roles and responsibilities of each position on the football pitch, from goalkeeper to striker.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="text-green-300 text-sm">• Goalkeeper (GK)</div>
+                        <div class="text-green-300 text-sm">• Defenders (CB, LB, RB)</div>
+                        <div class="text-green-300 text-sm">• Midfielders (CDM, CM, CAM)</div>
+                        <div class="text-green-300 text-sm">• Forwards (LW, RW, ST)</div>
+                    </div>
+                    <a href="/guides/positions" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block">
+                        Learn Positions
+                    </a>
+                </div>
+
+                <!-- Football Rules -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/20">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-3xl">📋</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Rules & Regulations</h3>
+                    <p class="text-green-100 mb-6 leading-relaxed">
+                        Master the laws of the game, from offside rules to VAR decisions and everything in between.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="text-green-300 text-sm">• Offside Rule Explained</div>
+                        <div class="text-green-300 text-sm">• Fouls and Misconduct</div>
+                        <div class="text-green-300 text-sm">• VAR Technology</div>
+                        <div class="text-green-300 text-sm">• Match Officials</div>
+                    </div>
+                    <a href="/guides/rules" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block">
+                        Study Rules
+                    </a>
+                </div>
+
+                <!-- Formations & Tactics -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/20">
+                    <div class="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-3xl">⚡</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Formations & Tactics</h3>
+                    <p class="text-green-100 mb-6 leading-relaxed">
+                        Explore different tactical formations and understand how teams set up to win matches.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="text-green-300 text-sm">• 4-4-2 Formation</div>
+                        <div class="text-green-300 text-sm">• 4-3-3 Formation</div>
+                        <div class="text-green-300 text-sm">• 3-5-2 Formation</div>
+                        <div class="text-green-300 text-sm">• Pressing & Counter-Attack</div>
+                    </div>
+                    <a href="/guides/tactics" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block">
+                        Learn Tactics
+                    </a>
+                </div>
+
+                <!-- Matchday Experience -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/20">
+                    <div class="w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-3xl">🏟️</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Matchday Guide</h3>
+                    <p class="text-green-100 mb-6 leading-relaxed">
+                        Essential information for attending Premier League matches, including travel, pubs, and stadium guides.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="text-green-300 text-sm">• Getting to Stadiums</div>
+                        <div class="text-green-300 text-sm">• Best Pubs for Away Fans</div>
+                        <div class="text-green-300 text-sm">• Stadium Food & Drink</div>
+                        <div class="text-green-300 text-sm">• Ticket Information</div>
+                    </div>
+                    <a href="/guides/matchday" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block">
+                        Plan Your Visit
+                    </a>
+                </div>
+
+                <!-- Transfer System -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/20">
+                    <div class="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-3xl">💰</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Transfer System</h3>
+                    <p class="text-green-100 mb-6 leading-relaxed">
+                        Understand how football transfers work, from transfer windows to agent fees and contract details.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="text-green-300 text-sm">• Transfer Windows</div>
+                        <div class="text-green-300 text-sm">• Contract Types</div>
+                        <div class="text-green-300 text-sm">• Agent Roles</div>
+                        <div class="text-green-300 text-sm">• Financial Fair Play</div>
+                    </div>
+                    <a href="/guides/transfers" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block">
+                        Learn Transfers
+                    </a>
+                </div>
+
+                <!-- Premier League History -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/20 transition-all duration-300 border border-white/20">
+                    <div class="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-3xl">📚</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Premier League History</h3>
+                    <p class="text-green-100 mb-6 leading-relaxed">
+                        Discover the rich history of the Premier League from its formation in 1992 to the present day.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="text-green-300 text-sm">• Formation in 1992</div>
+                        <div class="text-green-300 text-sm">• Legendary Players</div>
+                        <div class="text-green-300 text-sm">• Historic Moments</div>
+                        <div class="text-green-300 text-sm">• Record Breakers</div>
+                    </div>
+                    <a href="/guides/history" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block">
+                        Explore History
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Guide -->
+    <section class="py-16 px-4 bg-black/20">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Featured Guide</h2>
+                    <p class="text-xl text-green-100">Understanding Player Positions</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-white mb-4">What Does Each Number Mean?</h3>
+                            <p class="text-green-100 mb-6 leading-relaxed">
+                                Football shirt numbers traditionally correspond to specific positions on the pitch. 
+                                Understanding these numbers helps you follow the game better and appreciate tactical decisions.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                                    <span class="text-white">Goalkeeper</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                                    <span class="text-white">Right-Back</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+                                    <span class="text-white">Left-Back</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">10</span>
+                                    <span class="text-white">Playmaker/Attacking Midfielder</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-green-600 w-48 h-64 mx-auto rounded-lg flex items-center justify-center mb-4">
+                                <span class="text-white text-6xl">⚽</span>
+                            </div>
+                            <p class="text-green-200 text-sm">Football Pitch Layout</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <a href="/guides/positions" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition-colors inline-block">
+                            Read Full Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tips -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-12">Quick Football Tips</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                        <div class="text-4xl mb-4">⏱️</div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Match Duration</h3>
+                        <p class="text-green-200 text-sm">A football match lasts 90 minutes plus stoppage time, divided into two 45-minute halves.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                        <div class="text-4xl mb-4">🟨</div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Yellow Cards</h3>
+                        <p class="text-green-200 text-sm">Two yellow cards in one match result in a red card and ejection from the game.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                        <div class="text-4xl mb-4">🔄</div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Substitutions</h3>
+                        <p class="text-green-200 text-sm">Teams can make up to 5 substitutions during a match from their bench of 7 players.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>
