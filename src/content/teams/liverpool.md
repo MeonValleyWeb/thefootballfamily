@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
-owner: ""
-manager: ""
-website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+title: "Liverpool"
+slug: "liverpool"
+founded: 1892
+stadium: "Anfield"
+capacity: 53394
+owner: "Fenway Sports Group LLC"
+manager: "Arno Slot"
+website: "https://www.liverpoolfc.com"
+tagline: "Discover the rich history and current form of Liverpool"
 colors:
-  primary: "#DA020E"
+  primary: "#C8102E"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Liverpool
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Liverpool is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Anfield** is the home ground of Liverpool.
 
-- **Capacity**: 74,310
+- **Capacity**: 53,394
 - **Address**: TBD
 - **Opened**: TBD
 

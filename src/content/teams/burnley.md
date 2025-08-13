@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Burnley"
+slug: "burnley"
+founded: 1882
+stadium: "Turf Moor"
+capacity: 21944
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Burnley"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#6C1D45"
+  secondary: "#99D6EA"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Burnley
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Burnley is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Turf Moor** is the home ground of Burnley.
 
-- **Capacity**: 74,310
+- **Capacity**: 21,944
 - **Address**: TBD
 - **Opened**: TBD
 

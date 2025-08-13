@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
+title: "Everton"
+slug: "everton"
 founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+stadium: "Goodison Park"
+capacity: 39414
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Everton"
 colors:
-  primary: "#DA020E"
+  primary: "#003399"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Everton
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Everton is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Goodison Park** is the home ground of Everton.
 
-- **Capacity**: 74,310
+- **Capacity**: 39,414
 - **Address**: TBD
 - **Opened**: TBD
 

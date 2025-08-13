@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Tottenham Hotspur"
+slug: "tottenham"
+founded: 1882
+stadium: "Tottenham Hotspur Stadium"
+capacity: 62850
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Tottenham Hotspur"
 colors:
-  primary: "#DA020E"
+  primary: "#132257"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Tottenham Hotspur
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Tottenham Hotspur is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Tottenham Hotspur Stadium** is the home ground of Tottenham Hotspur.
 
-- **Capacity**: 74,310
+- **Capacity**: 62,850
 - **Address**: TBD
 - **Opened**: TBD
 

@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Manchester City"
+slug: "manchester-city"
+founded: 1880
+stadium: "Etihad Stadium"
+capacity: 55017
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Manchester City"
 colors:
-  primary: "#DA020E"
+  primary: "#6CABDD"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Manchester City
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Manchester City is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Etihad Stadium** is the home ground of Manchester City.
 
-- **Capacity**: 74,310
+- **Capacity**: 55,017
 - **Address**: TBD
 - **Opened**: TBD
 

@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Nottingham Forest"
+slug: "nottingham-forest"
+founded: 1865
+stadium: "The City Ground"
+capacity: 30445
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Nottingham Forest"
 colors:
-  primary: "#DA020E"
+  primary: "#DD0000"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Nottingham Forest
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Nottingham Forest is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**The City Ground** is the home ground of Nottingham Forest.
 
-- **Capacity**: 74,310
+- **Capacity**: 30,445
 - **Address**: TBD
 - **Opened**: TBD
 

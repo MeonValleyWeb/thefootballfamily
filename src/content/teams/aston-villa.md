@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Aston Villa"
+slug: "aston-villa"
+founded: 1874
+stadium: "Villa Park"
+capacity: 42682
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Aston Villa"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#95BFE5"
+  secondary: "#670E36"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Aston Villa
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Aston Villa is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Villa Park** is the home ground of Aston Villa.
 
-- **Capacity**: 74,310
+- **Capacity**: 42,682
 - **Address**: TBD
 - **Opened**: TBD
 

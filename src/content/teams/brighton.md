@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Brighton & Hove Albion"
+slug: "brighton"
+founded: 1901
+stadium: "American Express Community Stadium"
+capacity: 31800
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Brighton & Hove Albion"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#0057B8"
+  secondary: "#FFCD00"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Brighton & Hove Albion
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Brighton & Hove Albion is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**American Express Community Stadium** is the home ground of Brighton & Hove Albion.
 
-- **Capacity**: 74,310
+- **Capacity**: 31,800
 - **Address**: TBD
 - **Opened**: TBD
 

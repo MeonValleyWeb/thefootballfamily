@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Sheffield United"
+slug: "sheffield-united"
+founded: 1889
+stadium: "Bramall Lane"
+capacity: 32050
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Sheffield United"
 colors:
-  primary: "#DA020E"
+  primary: "#EE2737"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Sheffield United
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Sheffield United is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Bramall Lane** is the home ground of Sheffield United.
 
-- **Capacity**: 74,310
+- **Capacity**: 32,050
 - **Address**: TBD
 - **Opened**: TBD
 

@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Wolverhampton Wanderers"
+slug: "wolves"
+founded: 1877
+stadium: "Molineux Stadium"
+capacity: 31700
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Wolverhampton Wanderers"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#FDB462"
+  secondary: "#231F20"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Wolverhampton Wanderers
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Wolverhampton Wanderers is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Molineux Stadium** is the home ground of Wolverhampton Wanderers.
 
-- **Capacity**: 74,310
+- **Capacity**: 31,700
 - **Address**: TBD
 - **Opened**: TBD
 

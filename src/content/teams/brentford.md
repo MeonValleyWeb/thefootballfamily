@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Brentford"
+slug: "brentford"
+founded: 1889
+stadium: "Brentford Community Stadium"
+capacity: 17250
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Brentford"
 colors:
-  primary: "#DA020E"
+  primary: "#E30613"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Brentford
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Brentford is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Brentford Community Stadium** is the home ground of Brentford.
 
-- **Capacity**: 74,310
+- **Capacity**: 17,250
 - **Address**: TBD
 - **Opened**: TBD
 

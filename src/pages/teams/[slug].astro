@@ -1,99 +1,78 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import { getAllTeams, getTeamBySlug, getLastFiveYears, getTeamStatistics, getTeamBadge, getRecentMatches } from '../../utils/dataProcessor.js';
 import fs from 'fs';
 import path from 'path';
 
 export async function getStaticPaths() {
     const teamsDir = path.join(process.cwd(), 'src', 'content', 'teams');
-    
-    // Check if directory exists
-    if (!fs.existsSync(teamsDir)) {
-        return [];
-    }
-    
-    const teamFiles = fs.readdirSync(teamsDir).filter(file => file.endsWith('.md'));
-    
-    return teamFiles.map(file => {
+    if (!fs.existsSync(teamsDir)) { return []; }
+    const teamFiles = fs.readdirSync(teamsDir).filter((file: string) => file.endsWith('.md'));
+    return teamFiles.map((file: string) => {
         const slug = file.replace('.md', '');
-        const content = fs.readFileSync(path.join(teamsDir, file), 'utf-8');
-        
-        // Parse frontmatter
-        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-        let frontmatter = {};
-        let markdownContent = content;
-        
-        if (frontmatterMatch) {
-            const frontmatterText = frontmatterMatch[1];
-            markdownContent = content.replace(frontmatterMatch[0], '').trim();
-            
-            // Simple YAML parser for our needs
-            frontmatterText.split('\n').forEach(line => {
-                const colonIndex = line.indexOf(':');
-                if (colonIndex > 0) {
-                    const key = line.substring(0, colonIndex).trim();
-                    let value = line.substring(colonIndex + 1).trim();
-                    
-                    // Remove quotes
-                    if (value.startsWith('"') && value.endsWith('"')) {
-                        value = value.slice(1, -1);
-                    }
-                    
-                    // Handle nested objects (simple case)
-                    if (key.includes('.')) {
-                        const [parent, child] = key.split('.');
-                        if (!frontmatter[parent]) frontmatter[parent] = {};
-                        frontmatter[parent][child] = value;
-                    } else {
-                        frontmatter[key] = value;
-                    }
-                }
-            });
-        }
-        
-        return {
-            params: { slug },
-            props: { team: frontmatter, content: markdownContent }
-        };
+        return { params: { slug } };
     });
 }
 
-const { team, content } = Astro.props;
 const { slug } = Astro.params;
+const team = getTeamBySlug(slug);
+const years = getLastFiveYears();
+const stats = getTeamStatistics(slug, years);
+const badge = getTeamBadge(slug);
+const recentMatches = getRecentMatches(slug, 5);
+
+if (!team) { Astro.redirect('/teams'); }
 ---
 
 <MainLayout title={`${team.title} - The Football Family`}>
-    <!-- Team Header -->
-    <section class="py-16 px-4">
+    <!-- Hero Section -->
+    <section class="relative py-16 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
         <div class="container mx-auto">
-            <div class="max-w-4xl mx-auto">
-                <!-- Team Badge and Basic Info -->
-                <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mb-12">
-                    <div class="w-32 h-32 rounded-full flex items-center justify-center text-6xl font-bold text-white shadow-2xl"
+            <div class="max-w-6xl mx-auto">
+                <!-- Team Badge and Title -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
+                    <div class="w-32 h-32 flex-shrink-0">
+                        {badge ? (
+                            badge.type === 'svg' || badge.type === 'image' ? (
+                                <img 
+                                    src={badge.path} 
+                                    alt={`${team.title} badge`}
+                                    class="w-full h-full object-contain"
+                                />
+                            ) : badge.type === 'combined-svg' ? (
+                                <svg 
+                                    viewBox={badge.viewBox}
+                                    class="w-full h-full object-contain"
+                                    style={`clip-path: ${badge.clipPath}`}
+                                >
+                                    <use href={`${badge.svgPath}#${slug.replace('-', '_')}`} />
+                                </svg>
+                            ) : (
+                                <div class="w-full h-full rounded-full flex items-center justify-center text-6xl font-bold text-white shadow-2xl"
+                                     style={`background: linear-gradient(135deg, ${team.colors?.primary || '#333'}, ${team.colors?.secondary || '#666'})`}>
+                                    {team.title?.charAt(0) || 'T'}
+                                </div>
+                            )
+                        ) : (
+                            <div class="w-full h-full rounded-full flex items-center justify-center text-6xl font-bold text-white shadow-2xl"
                          style={`background: linear-gradient(135deg, ${team.colors?.primary || '#333'}, ${team.colors?.secondary || '#666'})`}>
                         {team.title?.charAt(0) || 'T'}
+                            </div>
+                        )}
                     </div>
                     
-                    <div class="flex-1">
-                        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{team.title}</h1>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-green-100">
-                            <div>
-                                <span class="text-green-300">Founded:</span> {team.founded}
-                            </div>
-                            <div>
-                                <span class="text-green-300">Stadium:</span> {team.stadium}
-                            </div>
-                            <div>
-                                <span class="text-green-300">Capacity:</span> {team.capacity?.toLocaleString()}
-                            </div>
-                            <div>
-                                <span class="text-green-300">Manager:</span> {team.manager}
-                            </div>
-                        </div>
+                    <div class="text-center md:text-left">
+                        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                            {team.title}
+                        </h1>
+                        <p class="text-xl text-gray-300 max-w-3xl">
+                            {team.tagline || `Discover the rich history and current form of ${team.title}, one of England's most prestigious football clubs.`}
+                        </p>
                     </div>
                 </div>
 
                 <!-- Quick Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                     <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center border border-white/20">
                         <div class="text-2xl font-bold text-white mb-1">{team.statistics?.best_position || 'N/A'}</div>
                         <div class="text-green-200 text-sm">Best Finish</div>
@@ -115,99 +94,224 @@ const { slug } = Astro.params;
         </div>
     </section>
 
-    <!-- Main Content -->
-    <section class="px-4 pb-16">
+    <!-- Main Content Section -->
+    <section class="py-16 px-4 bg-white">
         <div class="container mx-auto">
-            <div class="max-w-4xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Main Content -->
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Main Content (Left Side) -->
                     <div class="lg:col-span-2">
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
-                            <div class="prose prose-invert max-w-none">
-                                <div set:html={content.replace(/\n/g, '<br>')} class="text-green-100 leading-relaxed"></div>
+                        {/* About Team Overview */}
+                        <div class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">About {team.title}</h2>
+                            <div class="prose prose-lg text-gray-700 max-w-none">
+                                <p class="text-lg leading-relaxed">
+                                    {team.title} is a Premier League football club with a rich history in English football. 
+                                    Founded in {team.founded}, the club has established itself as one of the most successful 
+                                    teams in the country.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Recent Performance */}
+                        {stats && stats.latestSeason && (
+                            <div class="mb-12">
+                                <h2 class="text-3xl font-bold text-gray-900 mb-6">Most Recent Performance {stats.latestSeason}</h2>
+                                {(() => {
+                                    const latestSeasonStats = stats.seasons[stats.latestSeason];
+                                    return (
+                                        <div>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                                                <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl">
+                                                    <div class="text-2xl font-bold">{latestSeasonStats.wins}</div>
+                                                    <div class="text-sm opacity-90">Wins</div>
+                                                </div>
+                                                <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 text-white p-6 rounded-xl">
+                                                    <div class="text-2xl font-bold">{latestSeasonStats.draws}</div>
+                                                    <div class="text-sm opacity-90">Draws</div>
+                                                </div>
+                                                <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-xl">
+                                                    <div class="text-2xl font-bold">{latestSeasonStats.losses}</div>
+                                                    <div class="text-sm opacity-90">Losses</div>
+                                                </div>
+                                                <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl">
+                                                    <div class="text-2xl font-bold">{latestSeasonStats.points}</div>
+                                                    <div class="text-sm opacity-90">Points</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Goals</h3>
+                                                    <div class="space-y-3">
+                                                        <div class="flex justify-between">
+                                                            <span class="text-gray-600">Goals For</span>
+                                                            <span class="font-semibold text-green-600">{latestSeasonStats.goalsFor}</span>
+                                                        </div>
+                                                        <div class="flex justify-between">
+                                                            <span class="text-gray-600">Goals Against</span>
+                                                            <span class="font-semibold text-red-600">{latestSeasonStats.goalsAgainst}</span>
+                                                        </div>
+                                                        <div class="flex justify-between">
+                                                            <span class="text-gray-600">Goal Difference</span>
+                                                            <span class={`font-semibold ${latestSeasonStats.goalsFor - latestSeasonStats.goalsAgainst >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                                                {latestSeasonStats.goalsFor - latestSeasonStats.goalsAgainst >= 0 ? '+' : ''}{latestSeasonStats.goalsFor - latestSeasonStats.goalsAgainst}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Performance</h3>
+                                                    <div class="space-y-3">
+                                                        <div class="flex justify-between">
+                                                            <span class="text-gray-600">Total Matches</span>
+                                                            <span class="font-semibold">{latestSeasonStats.matches}</span>
+                                                        </div>
+                                                        <div class="flex justify-between">
+                                                            <span class="text-gray-600">Win Rate</span>
+                                                            <span class="font-semibold text-green-600">
+                                                                {latestSeasonStats.matches > 0 ? ((latestSeasonStats.wins / latestSeasonStats.matches) * 100).toFixed(1) : 0}%
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
+                            </div>
+                        )}
+
+                        {/* Recent Matches */}
+                        {recentMatches && recentMatches.length > 0 && (
+                            <div class="mb-12">
+                                <h2 class="text-3xl font-bold text-gray-900 mb-6">Recent Matches</h2>
+                                <div class="space-y-4">
+                                    {recentMatches.map((match: any) => (
+                                        <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center space-x-4">
+                                                    <div class={`px-3 py-1 rounded-full text-sm font-medium ${
+                                                        match.Result === 'W' ? 'bg-green-100 text-green-800' :
+                                                        match.Result === 'D' ? 'bg-yellow-100 text-yellow-800' :
+                                                        'bg-red-100 text-red-800'
+                                                    }`}>
+                                                        {match.Result}
+                                                    </div>
+                                                    <div class="text-sm text-gray-600">
+                                                        {new Date(match.Date).toLocaleDateString()}
+                                                    </div>
+                                                </div>
+                                                <div class="text-right">
+                                                    <div class="font-semibold text-gray-900">
+                                                        {match.Opponent}
+                                                    </div>
+                                                    <div class="text-sm text-gray-600">
+                                                        {match.Venue} • {match.GF}-{match.GA}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Quick Links */}
+                        <div class="mb-12">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Quick Links</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a href="/matches" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg text-center font-medium transition-colors">
+                                    View All Matches
+                                </a>
+                                <a href="/guides" class="bg-gray-600 hover:bg-gray-700 text-white p-4 rounded-lg text-center font-medium transition-colors">
+                                    Football Guides
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Sidebar -->
-                    <div class="space-y-6">
-                        <!-- Recent Form -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                            <h3 class="text-xl font-semibold text-white mb-4">Recent League Positions</h3>
-                            <div class="space-y-3">
-                                {team.league_positions && Object.entries(team.league_positions).slice(0, 5).map(([season, position]) => (
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-green-200">{season}</span>
-                                        <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                                            {position}{position === '1' ? 'st' : position === '2' ? 'nd' : position === '3' ? 'rd' : 'th'}
-                                        </span>
+                    <!-- Sidebar (Right Side) -->
+                    <div class="space-y-8">
+                        <!-- About Section -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">About {team.title}</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <span class="text-gray-600 block text-sm font-medium">Founded</span>
+                                    <span class="text-gray-900">{team.founded}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 block text-sm font-medium">Stadium</span>
+                                    <span class="text-gray-900">{team.stadium}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 block text-sm font-medium">Capacity</span>
+                                    <span class="text-gray-900">{team.capacity?.toLocaleString()}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 block text-sm font-medium">Manager</span>
+                                    <span class="text-gray-900">{team.manager || 'TBD'}</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 block text-sm font-medium">Owner</span>
+                                    <span class="text-gray-900">{team.owner || 'TBD'}</span>
                                     </div>
-                                ))}
                             </div>
                         </div>
 
-                        <!-- Stadium Info -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                            <h3 class="text-xl font-semibold text-white mb-4">Stadium Details</h3>
+                        <!-- Stadium Information -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">🏟️ Stadium Information</h3>
                             <div class="space-y-3">
                                 <div>
-                                    <span class="text-green-300 block text-sm">Name</span>
-                                    <span class="text-white">{team.stadium}</span>
+                                    <span class="text-gray-600 block text-sm">Name</span>
+                                    <span class="text-gray-900 font-medium">{team.stadium}</span>
                                 </div>
                                 <div>
-                                    <span class="text-green-300 block text-sm">Capacity</span>
-                                    <span class="text-white">{team.capacity?.toLocaleString()}</span>
+                                    <span class="text-gray-600 block text-sm">Capacity</span>
+                                    <span class="text-gray-900 font-medium">{team.capacity?.toLocaleString()}</span>
                                 </div>
                                 <div>
-                                    <span class="text-green-300 block text-sm">Owner</span>
-                                    <span class="text-white">{team.owner}</span>
+                                    <span class="text-gray-600 block text-sm">Owner</span>
+                                    <span class="text-gray-900 font-medium">{team.owner || 'TBD'}</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Quick Links -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                            <h3 class="text-xl font-semibold text-white mb-4">Quick Links</h3>
-                            <div class="space-y-3">
-                                <a href={`/matches?team=${slug}`} class="block text-green-300 hover:text-white transition-colors">
-                                    📊 Match Results
-                                </a>
-                                <a href={`/transfers?team=${slug}`} class="block text-green-300 hover:text-white transition-colors">
-                                    💰 Transfer History
-                                </a>
-                                <a href={`/news?team=${slug}`} class="block text-green-300 hover:text-white transition-colors">
-                                    📰 Latest News
-                                </a>
-                                {team.website && (
-                                    <a href={team.website} target="_blank" rel="noopener noreferrer" class="block text-green-300 hover:text-white transition-colors">
-                                        🌐 Official Website
-                                    </a>
-                                )}
+                        <!-- Team Colors -->
+                        {team.colors && (
+                            <div class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Team Colors</h3>
+                                <div class="flex space-x-3">
+                                    {Object.keys(team.colors).map(colorName => {
+                                        const color = team.colors[colorName];
+                                        return (
+                                            <div class="text-center">
+                                                <div class="w-12 h-12 rounded-full border-2 border-gray-200 mb-2" style={`background-color: ${color}`}></div>
+                                                <span class="text-sm text-gray-600 capitalize">{colorName}</span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+
+                        <!-- Related Teams -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Explore Other Teams</h3>
+                            <div class="space-y-2">
+                                <a href="/teams/arsenal" class="block text-green-600 hover:text-green-700 transition-colors">Arsenal</a>
+                                <a href="/teams/manchester-united" class="block text-green-600 hover:text-green-700 transition-colors">Manchester United</a>
+                                <a href="/teams/liverpool" class="block text-green-600 hover:text-green-700 transition-colors">Liverpool</a>
+                                <a href="/teams/manchester-city" class="block text-green-600 hover:text-green-700 transition-colors">Manchester City</a>
+                                <a href="/teams/chelsea" class="block text-green-600 hover:text-green-700 transition-colors">Chelsea</a>
+                                <a href="/teams/tottenham" class="block text-green-600 hover:text-green-700 transition-colors">Tottenham</a>
+                                <a href="/teams" class="block text-green-600 hover:text-green-700 transition-colors font-medium">View All Teams →</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Related Teams -->
-    <section class="py-16 px-4 bg-black/20">
-        <div class="container mx-auto">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-white mb-8">Explore Other Teams</h2>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="/teams/arsenal" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors">Arsenal</a>
-                    <a href="/teams/manchester-united" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors">Manchester United</a>
-                    <a href="/teams/liverpool" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors">Liverpool</a>
-                    <a href="/teams/manchester-city" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors">Manchester City</a>
-                    <a href="/teams/chelsea" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors">Chelsea</a>
-                    <a href="/teams/tottenham" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg text-white transition-colors">Tottenham</a>
-                </div>
-                <div class="mt-8">
-                    <a href="/teams" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                        View All Teams
-                    </a>
                 </div>
             </div>
         </div>

@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "AFC Bournemouth"
+slug: "bournemouth"
+founded: 1899
+stadium: "Vitality Stadium"
+capacity: 11364
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of AFC Bournemouth"
 colors:
   primary: "#DA020E"
-  secondary: "#FFFFFF"
+  secondary: "#000000"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# AFC Bournemouth
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+AFC Bournemouth is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Vitality Stadium** is the home ground of AFC Bournemouth.
 
-- **Capacity**: 74,310
+- **Capacity**: 11,364
 - **Address**: TBD
 - **Opened**: TBD
 

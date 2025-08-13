@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Chelsea"
+slug: "chelsea"
+founded: 1905
+stadium: "Stamford Bridge"
+capacity: 40834
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Chelsea"
 colors:
-  primary: "#DA020E"
+  primary: "#034694"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Chelsea
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Chelsea is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Stamford Bridge** is the home ground of Chelsea.
 
-- **Capacity**: 74,310
+- **Capacity**: 40,834
 - **Address**: TBD
 - **Opened**: TBD
 

@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Crystal Palace"
+slug: "crystal-palace"
+founded: 1905
+stadium: "Selhurst Park"
+capacity: 25486
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Crystal Palace"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#1B458F"
+  secondary: "#A7A5A6"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Crystal Palace
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Crystal Palace is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Selhurst Park** is the home ground of Crystal Palace.
 
-- **Capacity**: 74,310
+- **Capacity**: 25,486
 - **Address**: TBD
 - **Opened**: TBD
 

@@ -1,15 +1,15 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Newcastle United"
+slug: "newcastle-united"
+founded: 1892
+stadium: "St. James' Park"
+capacity: 52305
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Newcastle United"
 colors:
-  primary: "#DA020E"
+  primary: "#241F20"
   secondary: "#FFFFFF"
 league_positions:
   "2023-24": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Newcastle United
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Newcastle United is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**St. James' Park** is the home ground of Newcastle United.
 
-- **Capacity**: 74,310
+- **Capacity**: 52,305
 - **Address**: TBD
 - **Opened**: TBD
 

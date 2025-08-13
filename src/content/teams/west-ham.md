@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "West Ham United"
+slug: "west-ham"
+founded: 1895
+stadium: "London Stadium"
+capacity: 66000
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of West Ham United"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#7A263A"
+  secondary: "#1BB1E7"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# West Ham United
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+West Ham United is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**London Stadium** is the home ground of West Ham United.
 
-- **Capacity**: 74,310
+- **Capacity**: 66,000
 - **Address**: TBD
 - **Opened**: TBD
 

@@ -1,16 +1,16 @@
 ---
-title: "Manchester United"
-slug: "manchester-united"
-founded: 1878
-stadium: "Old Trafford"
-capacity: 74310
+title: "Fulham"
+slug: "fulham"
+founded: 1879
+stadium: "Craven Cottage"
+capacity: 19359
 owner: ""
 manager: ""
 website: ""
-tagline: "Discover the rich history and current form of Manchester United"
+tagline: "Discover the rich history and current form of Fulham"
 colors:
-  primary: "#DA020E"
-  secondary: "#FFFFFF"
+  primary: "#FFFFFF"
+  secondary: "#000000"
 league_positions:
   "2023-24": null
   "2022-23": null
@@ -27,11 +27,11 @@ statistics:
   league_cups: null
 ---
 
-# Manchester United
+# Fulham
 
 ## Overview
 
-Manchester United is a Premier League football club with a rich history in English football.
+Fulham is a Premier League football club with a rich history in English football.
 
 ## Recent Performance
 
@@ -44,9 +44,9 @@ Manchester United is a Premier League football club with a rich history in Engli
 
 ## Stadium Information
 
-**Old Trafford** is the home ground of Manchester United.
+**Craven Cottage** is the home ground of Fulham.
 
-- **Capacity**: 74,310
+- **Capacity**: 19,359
 - **Address**: TBD
 - **Opened**: TBD
 

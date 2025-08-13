@@ -1,61 +1,32 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import fs from 'fs';
-import path from 'path';
+import { getMatchDataForYears, getLastFiveYears } from '../utils/dataProcessor.js';
 
-// Sample match data - we'll replace this with your CSV data
-const sampleMatches = [
-    {
-        date: '2024-01-15',
-        homeTeam: 'Arsenal',
-        awayTeam: 'Crystal Palace',
-        homeScore: 5,
-        awayScore: 0,
-        competition: 'Premier League',
-        season: '2023-24',
-        venue: 'Emirates Stadium'
-    },
-    {
-        date: '2024-01-13',
-        homeTeam: 'Manchester United',
-        awayTeam: 'Tottenham',
-        homeScore: 2,
-        awayScore: 2,
-        competition: 'Premier League',
-        season: '2023-24',
-        venue: 'Old Trafford'
-    },
-    {
-        date: '2024-01-12',
-        homeTeam: 'Liverpool',
-        awayTeam: 'Fulham',
-        homeScore: 2,
-        awayScore: 1,
-        competition: 'Premier League',
-        season: '2023-24',
-        venue: 'Anfield'
-    },
-    {
-        date: '2024-01-11',
-        homeTeam: 'Chelsea',
-        awayTeam: 'Middlesbrough',
-        homeScore: 6,
-        awayScore: 1,
-        competition: 'FA Cup',
-        season: '2023-24',
-        venue: 'Stamford Bridge'
-    },
-    {
-        date: '2024-01-10',
-        homeTeam: 'Manchester City',
-        awayTeam: 'Huddersfield',
-        homeScore: 5,
-        awayScore: 0,
-        competition: 'FA Cup',
-        season: '2023-24',
-        venue: 'Etihad Stadium'
-    }
-];
+// Get real match data from CSV files
+const years = getLastFiveYears();
+const allMatches = getMatchDataForYears(years);
+
+// Process matches for display
+const processedMatches = allMatches
+    .filter(match => match.Date && match.Team && match.Opponent)
+    .map(match => ({
+        date: match.Date,
+        team: match.Team,
+        opponent: match.Opponent,
+        teamScore: parseInt(match.GF) || 0,
+        opponentScore: parseInt(match.GA) || 0,
+        result: match.Result,
+        competition: match.Comp || 'Premier League',
+        season: match.Season || '2024',
+        venue: match.Venue,
+        round: match.Round,
+        attendance: match.Attendance,
+        formation: match.Formation,
+        captain: match.Captain,
+        referee: match.Referee
+    }))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 100); // Show last 100 matches (increased from 50)
 
 // Function to get team color
 function getTeamColor(teamName) {
@@ -69,7 +40,19 @@ function getTeamColor(teamName) {
         'Crystal Palace': '#1B458F',
         'Fulham': '#FFFFFF',
         'Middlesbrough': '#DC143C',
-        'Huddersfield': '#0E63AD'
+        'Huddersfield': '#0E63AD',
+        'Brighton': '#0057B8',
+        'Burnley': '#6C1D45',
+        'Everton': '#003399',
+        'Newcastle United': '#241F20',
+        'Aston Villa': '#95BFE5',
+        'West Ham': '#7A263A',
+        'Wolves': '#FDB913',
+        'Brentford': '#E30613',
+        'Bournemouth': '#DA291C',
+        'Nottingham Forest': '#DD0000',
+        'Sheffield United': '#EE2737',
+        'Luton Town': '#FF6B35'
     };
     return colors[teamName] || '#666666';
 }
@@ -134,7 +117,7 @@ function getTeamColor(teamName) {
         <div class="container mx-auto">
             <div class="max-w-4xl mx-auto">
                 <div class="space-y-4" id="matches-container">
-                    {sampleMatches.map(match => (
+                    {processedMatches.map(match => (
                         <div class="match-card bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
                             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                                 <!-- Date and Competition -->
@@ -153,21 +136,21 @@ function getTeamColor(teamName) {
                                     <div class="flex items-center space-x-6">
                                         <!-- Home Team -->
                                         <div class="text-right">
-                                            <div class="text-white font-semibold text-lg">{match.homeTeam}</div>
+                                            <div class="text-white font-semibold text-lg">{match.team}</div>
                                             <div class="text-green-200 text-sm">Home</div>
                                         </div>
 
                                         <!-- Score -->
                                         <div class="bg-black/30 rounded-lg px-6 py-3 text-center">
                                             <div class="text-2xl font-bold text-white">
-                                                {match.homeScore} - {match.awayScore}
+                                                {match.teamScore} - {match.opponentScore}
                                             </div>
                                             <div class="text-green-200 text-xs">FT</div>
                                         </div>
 
                                         <!-- Away Team -->
                                         <div class="text-left">
-                                            <div class="text-white font-semibold text-lg">{match.awayTeam}</div>
+                                            <div class="text-white font-semibold text-lg">{match.opponent}</div>
                                             <div class="text-green-200 text-sm">Away</div>
                                         </div>
                                     </div>

@@ -1,53 +1,53 @@
 // Club badge URLs and team data
 export const clubBadges = {
-    'arsenal': 'https://logos-world.net/wp-content/uploads/2020/06/Arsenal-Logo.png',
-    'aston-villa': 'https://logos-world.net/wp-content/uploads/2020/06/Aston-Villa-Logo.png',
-    'brighton': 'https://logos-world.net/wp-content/uploads/2020/06/Brighton-Hove-Albion-Logo.png',
-    'burnley': 'https://logos-world.net/wp-content/uploads/2020/06/Burnley-Logo.png',
-    'chelsea': 'https://logos-world.net/wp-content/uploads/2020/06/Chelsea-Logo.png',
-    'crystal-palace': 'https://logos-world.net/wp-content/uploads/2020/06/Crystal-Palace-Logo.png',
-    'everton': 'https://logos-world.net/wp-content/uploads/2020/06/Everton-Logo.png',
-    'fulham': 'https://logos-world.net/wp-content/uploads/2020/06/Fulham-Logo.png',
-    'liverpool': 'https://logos-world.net/wp-content/uploads/2020/06/Liverpool-Logo.png',
-    'luton-town': 'https://logos-world.net/wp-content/uploads/2020/06/Luton-Town-Logo.png',
-    'manchester-city': 'https://logos-world.net/wp-content/uploads/2020/06/Manchester-City-Logo.png',
-    'manchester-united': 'https://logos-world.net/wp-content/uploads/2020/06/Manchester-United-Logo.png',
-    'newcastle-united': 'https://logos-world.net/wp-content/uploads/2020/06/Newcastle-United-Logo.png',
-    'nottingham-forest': 'https://logos-world.net/wp-content/uploads/2020/06/Nottingham-Forest-Logo.png',
-    'sheffield-united': 'https://logos-world.net/wp-content/uploads/2020/06/Sheffield-United-Logo.png',
-    'tottenham': 'https://logos-world.net/wp-content/uploads/2020/06/Tottenham-Logo.png',
-    'west-ham': 'https://logos-world.net/wp-content/uploads/2020/06/West-Ham-United-Logo.png',
-    'wolves': 'https://logos-world.net/wp-content/uploads/2020/06/Wolverhampton-Wanderers-Logo.png',
-    'brentford': 'https://logos-world.net/wp-content/uploads/2020/06/Brentford-Logo.png',
-    'bournemouth': 'https://logos-world.net/wp-content/uploads/2020/06/AFC-Bournemouth-Logo.png'
+    'arsenal': 'https://logos-world.net/wp-content/uploads/2020/06/Arsenal-Logo.svg',
+    'aston-villa': 'https://logos-world.net/wp-content/uploads/2020/06/Aston-Villa-Logo.svg',
+    'brighton': 'https://logos-world.net/wp-content/uploads/2020/06/Brighton-Hove-Albion-Logo.svg',
+    'burnley': 'https://logos-world.net/wp-content/uploads/2020/06/Burnley-Logo.svg',
+    'chelsea': 'https://logos-world.net/wp-content/uploads/2020/06/Chelsea-Logo.svg',
+    'crystal-palace': 'https://logos-world.net/wp-content/uploads/2020/06/Crystal-Palace-Logo.svg',
+    'everton': 'https://logos-world.net/wp-content/uploads/2020/06/Everton-Logo.svg',
+    'fulham': 'https://logos-world.net/wp-content/uploads/2020/06/Fulham-Logo.svg',
+    'liverpool': 'https://logos-world.net/wp-content/uploads/2020/06/Liverpool-Logo.svg',
+    'luton-town': 'https://logos-world.net/wp-content/uploads/2020/06/Luton-Town-Logo.svg',
+    'manchester-city': 'https://logos-world.net/wp-content/uploads/2020/06/Manchester-City-Logo.svg',
+    'manchester-united': 'https://logos-world.net/wp-content/uploads/2020/06/Manchester-United-Logo.svg',
+    'newcastle-united': 'https://logos-world.net/wp-content/uploads/2020/06/Newcastle-United-Logo.svg',
+    'nottingham-forest': 'https://logos-world.net/wp-content/uploads/2020/06/Nottingham-Forest-Logo.svg',
+    'sheffield-united': 'https://logos-world.net/wp-content/uploads/2020/06/Sheffield-United-Logo.svg',
+    'tottenham': 'https://logos-world.net/wp-content/uploads/2020/06/Tottenham-Logo.svg',
+    'west-ham': 'https://logos-world.net/wp-content/uploads/2020/06/West-Ham-United-Logo.svg',
+    'wolves': 'https://logos-world.net/wp-content/uploads/2020/06/Wolverhampton-Wanderers-Logo.svg',
+    'brentford': 'https://logos-world.net/wp-content/uploads/2020/06/Brentford-Logo.svg',
+    'bournemouth': 'https://logos-world.net/wp-content/uploads/2020/06/AFC-Bournemouth-Logo.svg'
 };
 
 // Alternative badge sources (more reliable)
 export const clubBadgesAlt = {
-    'arsenal': '/images/badges/arsenal.png',
-    'aston-villa': '/images/badges/aston-villa.png',
-    'brighton': '/images/badges/brighton.png',
-    'burnley': '/images/badges/burnley.png',
-    'chelsea': '/images/badges/chelsea.png',
-    'crystal-palace': '/images/badges/crystal-palace.png',
-    'everton': '/images/badges/everton.png',
-    'fulham': '/images/badges/fulham.png',
-    'liverpool': '/images/badges/liverpool.png',
-    'luton-town': '/images/badges/luton-town.png',
-    'manchester-city': '/images/badges/manchester-city.png',
-    'manchester-united': '/images/badges/manchester-united.png',
-    'newcastle-united': '/images/badges/newcastle-united.png',
-    'nottingham-forest': '/images/badges/nottingham-forest.png',
-    'sheffield-united': '/images/badges/sheffield-united.png',
-    'tottenham': '/images/badges/tottenham.png',
-    'west-ham': '/images/badges/west-ham.png',
-    'wolves': '/images/badges/wolves.png',
-    'brentford': '/images/badges/brentford.png',
-    'bournemouth': '/images/badges/bournemouth.png'
+    'arsenal': '/images/badges/arsenal.svg',
+    'aston-villa': '/images/badges/aston-villa.svg',
+    'brighton': '/images/badges/brighton.svg',
+    'burnley': '/images/badges/burnley.svg',
+    'chelsea': '/images/badges/chelsea.svg',
+    'crystal-palace': '/images/badges/crystal-palace.svg',
+    'everton': '/images/badges/everton.svg',
+    'fulham': '/images/badges/fulham.svg',
+    'liverpool': '/images/badges/liverpool.svg',
+    'luton-town': '/images/badges/luton-town.svg',
+    'manchester-city': '/images/badges/manchester-city.svg',
+    'manchester-united': '/images/badges/manchester-united.svg',
+    'newcastle-united': '/images/badges/newcastle-united.svg',
+    'nottingham-forest': '/images/badges/nottingham-forest.svg',
+    'sheffield-united': '/images/badges/sheffield-united.svg',
+    'tottenham': '/images/badges/tottenham.svg',
+    'west-ham': '/images/badges/west-ham.svg',
+    'wolves': '/images/badges/wolves.svg',
+    'brentford': '/images/badges/brentford.svg',
+    'bournemouth': '/images/badges/bournemouth.svg'
 };
 
 export function getClubBadge(slug) {
-    return clubBadgesAlt[slug] || clubBadges[slug] || '/images/badges/default.png';
+    return clubBadgesAlt[slug] || clubBadges[slug] || '/images/badges/default.svg';
 }
 
 export function getClubInitials(teamName) {
