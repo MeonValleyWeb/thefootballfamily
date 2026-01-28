@@ -10,11 +10,11 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "astro": "^5.15.7",
+    "astro": "^5.16.15",
     "@astrojs/tailwind": "^6.0.2"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.1.17"
   },
   "keywords": [
     "football",
